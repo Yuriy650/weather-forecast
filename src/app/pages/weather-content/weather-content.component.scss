@@ -40,6 +40,14 @@
   width: 100%;
   flex-grow: 1;
   background: #1e90ff;
+  &.night {
+    background: #222242;
+  }
+}
+
+.btn {
+  color: #fff;
+  font-weight: 500;
 }
 
 .btns {
@@ -50,39 +58,47 @@
 
 .city-label {
   padding-left: 8px;
+
+}
+
+.city-option {
+  &:hover {
+    color: white;
+  }
 }
 
 .ng-select ::ng-deep .ng-arrow {
   display: none;
 }
 .ng-select ::ng-deep .ng-arrow-wrapper {
-  background-image: url('../assets/icons/expand_more_white_24dp.svg');
+  background-image: url('../../../assets/icons/arrow-down.svg');
   background-repeat: no-repeat;
   top: 0.5rem;
   padding: 1rem;
   transform-origin: 12px 12px;
   transition: transform 0.3s ease;
 }
+
 .ng-select-opened ::ng-deep .ng-arrow-wrapper {
   transform: rotate(180deg);
 }
 
 ::ng-deep.ng-select.ng-select-single .ng-select-container .ng-value-container, ::ng-deep.ng-select .ng-clear-wrapper {
   top: 0.7rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
 }
 
-::ng-deep.ng-select .ng-select-container .ng-value-container .ng-input>input {
-  left: 8px
+::ng-deep.ng-select .ng-select-container .ng-value-container ::ng-deep.ng-input>input {
+  padding-left: 0.5rem;
 }
 
 ::ng-deep.ng-dropdown-panel .ng-dropdown-panel-items {
   padding: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
-  background: #1e90ff;
-  color: #fff;
+  background: #eee;
+  color: #DC3545;
   font-weight: 500;
 }
 
@@ -99,9 +115,17 @@
 ::ng-deep.ng-dropdown-panel .scroll-host {
   height: 12rem;
   top: -6px;
+  left: -2px;
+}
+
+::ng-deep.ng-option:hover {
+  background: darkgrey;
+  color: #fff;
+  padding: 0.2rem;
 }
 
 ::ng-deep.ng-select .ng-select-container .ng-value-container ::ng-deep.ng-input>input {
   color: #fff;
 }
+
 

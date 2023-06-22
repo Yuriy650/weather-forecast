@@ -1,0 +1,107 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.weather {
+  &-icon {
+    object-fit: cover;
+    text-align: center;
+    width: 8rem;
+    height: 8rem;
+    background-repeat: no-repeat;
+    position: relative;
+    @media (max-width: 576px) {
+      top: 1rem;
+    }
+  }
+  &-text {
+    position: absolute;
+    top: 8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    @media (max-width: 576px) {
+      padding: 1rem 0 0 1rem;
+      font-size: 1rem;
+      top: 7rem;
+      font-weight: 500;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  min-height: 20rem;
+  background: #1e90ff;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+  font-weight: 500;
+  @media (max-width: 576px) {
+    align-items: start;
+    &.loader {
+      align-items: center;
+    }
+  }
+  &-title {
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  &-body {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  &-main {
+    position: absolute;
+    left: 1rem;
+    top: 2.5rem;
+    &-date {
+      font-weight: 500;
+      font-size: 1.5rem;
+      @media (max-width: 576px) {
+        font-size: 1rem;
+        &.long-date {
+          display: none;
+        }
+      }
+    }
+    @media (max-width: 576px) {
+     top: 0.5rem;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  &-temp {
+    position: absolute;
+    right: 2.5rem;
+    top: 3rem;
+    font-size: 3rem;
+    @media (max-width: 576px) {
+      font-size: 1.5rem;
+      right: 1rem;
+      top: 0.5rem;
+    }
+  }
+  &.night {
+    background: #222242;
+  }
+}
+
+li {
+  line-height: 1.5rem;
+}
+
+.spinner {
+  position: absolute;
+  top: 8rem;
+  @media (max-width: 576px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.error {
+  margin-top: 2rem;
+}

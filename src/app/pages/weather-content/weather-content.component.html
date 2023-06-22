@@ -1,0 +1,33 @@
+<div class="weather-content">
+  <div class="fields mt-1 mb-3">
+    <ng-select class="form-field"
+               [class.night]="(cityForecast$ | async)?.current?.is_day !== 1 && !isLoading"
+               [items]="cities"
+               [searchable]="true"
+               [(ngModel)]="city"
+               (ngModelChange)="onChangeCity()">
+      <ng-template ng-label-tmp let-item="item">
+        <img [src]="(cityForecast$ | async)?.current?.condition?.icon" width="32" height="32" alt="icon">
+        <span class="city-label text=warning">{{item}}</span>
+      </ng-template>
+      <ng-template ng-option-tmp let-item="item">
+        <span class="city-option">{{item}}</span>
+      </ng-template>
+    </ng-select>
+    <div class="btns col-md-2 ms-2">
+      <button type="button" class="btn btn-danger mx-1" (click)="isCelsius = true">°C</button>
+      <button type="button" class="btn btn-warning ms-1" (click)="isCelsius = false">°F</button>
+    </div>
+  </div>
+  <app-city-card [isLoading]="isLoading"
+                 [errorMessage]="errorMessage"
+                 [cityWeather]="cityForecast"
+                 [isCelsius]="isCelsius">
+  </app-city-card>
+</div>
+
+
+
+
+
+

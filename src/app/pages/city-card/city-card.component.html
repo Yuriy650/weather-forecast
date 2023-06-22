@@ -1,0 +1,61 @@
+<div class="card"
+     [class.night]="cityWeather && cityWeather.current.is_day !== 1 && !isLoading"
+     [class.loader]="isLoading">
+  <ng-container *ngIf="!isLoading; else loader">
+  <div class="card-main">
+    <p class="card-main-date">{{cityWeather.location.localtime | date : 'EEEE' }}</p>
+    <p class="card-main-date long-date">{{cityWeather.location.localtime | date : 'longDate' }}</p>
+  </div>
+  <div class="card-temp">
+    <p *ngIf="isDegree">{{cityWeather.current.temp_c}} °C</p>
+    <p *ngIf="!isDegree">{{cityWeather.current.temp_f}} °F</p>
+  </div>
+  <div class="weather-icon col-md-4" [ngStyle]="{backgroundImage: 'url(' + newIcon + ') '}">
+  </div>
+  <div class="weather-text text-white"><span>{{cityWeather.current.condition.text}}</span></div>
+  <div class="card-body">
+    <h5 class="card-title text-white fs-2">{{cityWeather.location.country}}, {{cityWeather.location.name}}</h5>
+    <p class="card-text text-white mb-1">{{cityWeather.location.name}}
+      located at <span class="text-warning">{{cityWeather.location.lat}}</span> N
+      <span class="text-warning">{{cityWeather.location.lon}}</span> E.
+      Local time is <span class="text-warning">{{cityWeather.location.localtime}}</span>.</p>
+    <ul>
+      <li>The temperature feels like
+        <span class="text-warning" *ngIf="isDegree else fahrenheit">
+          {{cityWeather.current.feelslike_c}} °C
+        </span>
+        <ng-template #fahrenheit>
+          <span class="text-warning">{{cityWeather.current.feelslike_f}} °F</span>
+        </ng-template>
+      </li>
+      <li>The relative humidity is near
+        <span class="text-warning">
+          {{cityWeather.current.humidity}}
+        </span> percent.
+      </li>
+      <li>Average winds will be at
+        <span class="text-warning">
+        {{cityWeather.current.wind_mph}}
+        </span> MPH
+      </li>
+      <li>Air Pressure
+        <span class="text-warning">
+        {{cityWeather.current.pressure_in}}
+        </span>
+      </li>
+    </ul>
+  </div>
+  </ng-container>
+  <ng-container *ngIf="error && isLoading">
+    <p class="error text-danger mt-4">Error: {{error}}</p>
+  </ng-container>
+  <ng-template #loader>
+    <div class="d-flex spinner justify-content-center">
+      <span class="spinner-border text-warning" role="status">
+      </span>
+    </div>
+  </ng-template>
+</div>
+
+
+
